@@ -94,8 +94,8 @@ window.resumeData = {
     description:
       '如果你正在寻找一位认真、细致，<br />能够连接商务与实务的新人，欢迎联系我。',
     links: [
-      { label: '邮箱待补充', href: '#contact' },
-      { label: '联系方式待补充', href: '#contact' }
+      { label: 'baoyitu@ln.hk', href: 'mailto:baoyitu@ln.hk' },
+      { label: '69501859', href: 'tel:69501859' }
     ],
     socials: ['LinkedIn', 'GitHub', '小红书']
   }
