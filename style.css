@@ -9,8 +9,8 @@ button { color: inherit; font: inherit; }
 .brand, .main-nav, .theme-toggle { display: flex; align-items: center; }
 .brand { gap: 10px; font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: .06em; font-weight: 500; }
 .brand-mark { display: grid; place-items: center; width: 28px; height: 28px; background: var(--ink); color: var(--bg); border-radius: 50%; font-family: "Manrope", sans-serif; font-weight: 800; font-size: 14px; }
-.main-nav { gap: 28px; margin-left: 80px; }
-.nav-link { position: relative; color: var(--muted); font-size: 12px; transition: color .25s ease; }
+.main-nav { display: flex; align-items: center; justify-content: space-between; gap: 28px; margin-left: 80px; min-width: 320px; }
+.nav-link { position: relative; color: var(--muted); font-size: 12px; transition: color .25s ease; flex: 1; text-align: center; }
 .nav-link::after { content: ""; position: absolute; left: 0; bottom: -7px; width: 100%; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform .25s ease; }
 .nav-link:hover, .nav-link.active { color: var(--ink); }.nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 .theme-toggle { gap: 8px; padding: 8px 0 8px 12px; border: 0; background: none; cursor: pointer; font-size: 12px; }.theme-icon { font-size: 18px; line-height: 1; }.theme-toggle:hover { color: var(--accent); }

@@ -8,7 +8,6 @@ window.resumeData = {
       { label: '关于我', href: '#about', active: true },
       { label: '经历', href: '#experience', active: false },
       { label: '技能', href: '#skills', active: false },
-      { label: '作品', href: 'works.html', active: false },
       { label: '联系', href: '#contact', active: false }
     ]
   },
