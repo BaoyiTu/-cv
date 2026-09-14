@@ -138,6 +138,54 @@ function renderProjects() {
     .join('');
 }
 
+function renderWorksPage() {
+  const worksGrid = document.querySelector('.works-page-grid');
+  if (!worksGrid || !resumeData.projects) return;
+
+  worksGrid.innerHTML = resumeData.projects
+    .map(
+      (project, index) => {
+        const visualMap = {
+          research: '<span class="project-index">01 / RESEARCH</span><div class="visual-chart"><i></i><i></i><i></i><i></i><i></i></div><span class="visual-label">EXPORT<br />COMPETITIVENESS</span>',
+          legal: '<span class="project-index">02 / LEGAL OPS</span><div class="visual-browser"><div></div><div></div><div></div></div><span class="visual-label">CROSS-BORDER<br />DOCUMENTS</span>',
+          field: '<span class="project-index">03 / FIELDWORK</span><div class="visual-lines"><i></i><i></i><i></i><i></i></div><span class="visual-label">ASSET<br />PRESERVATION</span>'
+        };
+
+        const visualClassMap = {
+          research: 'visual-red',
+          legal: 'visual-dark',
+          field: 'visual-paper'
+        };
+
+        const projectIndex = String(index + 1).padStart(2, '0');
+        const visualHtml = visualMap[project.visual] || visualMap.research;
+        const visualClass = visualClassMap[project.visual] || 'visual-red';
+
+        return `
+          <article class="project-card ${index === 0 ? 'project-card-featured' : ''} reveal" data-project="${project.id}" tabindex="0" role="button" aria-expanded="false">
+            <div class="project-visual ${visualClass}">
+              ${visualHtml.replace('01 / RESEARCH', `${projectIndex} / ${project.visual.toUpperCase()}`)}
+            </div>
+            <div class="project-info">
+              <div>
+                <p class="project-kicker">${project.kicker}</p>
+                <h3>${project.title}</h3>
+              </div>
+              <span class="expand-icon">↗</span>
+            </div>
+            <div class="project-detail">
+              <p>${project.detail}</p>
+              <div class="tag-row">
+                ${project.tags.map((tag) => `<span>${tag}</span>`).join('')}
+              </div>
+            </div>
+          </article>
+        `;
+      }
+    )
+    .join('');
+}
+
 function renderContact() {
   const heading = document.querySelector('#contact-heading');
   const contactLinks = document.querySelector('#contact-links');
@@ -242,8 +290,14 @@ function bootstrap() {
   renderStats();
   renderExperience();
   renderSkills();
-  renderProjects();
   renderContact();
+
+  if (document.querySelector('.works-page-grid')) {
+    renderWorksPage();
+  } else {
+    renderProjects();
+  }
+
   initTheme();
   initRevealObserver();
   initProjectCards();
